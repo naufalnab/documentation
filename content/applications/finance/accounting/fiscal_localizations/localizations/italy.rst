@@ -26,7 +26,7 @@ Destinatario* on the FatturaPA portal. The *Codice Destinatario* is ``K95IV18``.
 
 #. Go to https://ivaservizi.agenziaentrate.gov.it/portale/ and authenticate.
 #. Go to section :menuselection:`Fatture e Corrispettivi`.
-#. Set the user as Legal Party for the VAT number you wish to configure the electronic adress.
+#. Set the user as Legal Party for the VAT number you wish to configure the electronic address.
 #. In :menuselection:`Servizi Disponibili --> Fatturazione Elettronica --> Registrazione
    dell’indirizzo telematico dove ricevere tutte le fatture elettroniche`, input Odoo's Codice
    Destinatario (**K95IV18**), then confirm.
