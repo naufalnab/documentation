@@ -161,7 +161,7 @@ Then, create a new email server and check the box for :guilabel:`Outlook`. Next,
 :guilabel:`Name` (it can be anything) and the Microsoft Outlook email :guilabel:`Username`.
 
 If the :guilabel:`From Filter` field is empty, enter either a :ref:`domain or email address
-<email_communication/default_from>`.
+<email_communication/default>`.
 
 Then, cick on :guilabel:`Connect your Outlook account`.
 
