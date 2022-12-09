@@ -25,6 +25,7 @@ products and increase your average cart sizes.
 
    ecommerce/getting_started
    ecommerce/managing_products
+   ecommerce/checkout_payment_shipping
    ecommerce/taxes
    ecommerce/shopper_experience
    ecommerce/maximizing_revenue
