@@ -6,7 +6,7 @@ Odoo offers the possibility of grouping multiple bills' payments into one, facil
 reconciliation process.
 
 .. seealso::
-   - :doc:`../supplier_bills/manage`
+   - :doc:`../../../../inventory_and_mrp/purchase/manage_deals/manage`
    - :doc:`../../bank/reconciliation/use_cases`
 
 Group payments
