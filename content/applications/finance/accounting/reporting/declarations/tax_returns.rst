@@ -17,6 +17,8 @@ refunded.
 Prerequisites
 =============
 
+.. _reporting/declarations/tax_returns/tax_return_periodicity:
+
 Tax Return Periodicity
 ----------------------
 
