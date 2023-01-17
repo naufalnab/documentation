@@ -67,11 +67,6 @@ View objects expose a number of fields. They are optional unless specified other
 Attributes
 ==========
 
-.. todo::
-
-  view attributes & view element attributes
-  attrs & states attributes are missing generic information
-
 The different view types have a wide variety of attributes allowing customizations of
 the generic behaviors. Some main attributes will be explained here. They do not all have
 an impact on all view types.
@@ -308,9 +303,8 @@ how the matched node should be altered:
 
       <field name="sale_information" position="attributes">
         <attribute name="invisible">0</attribute>
-        <attribute name="attrs">
-          {'invisible': [('sale_ok', '=', False)], 'readonly': [('editable', '=', False)]}
-        </attribute>
+        <attribute name="invisible">[('sale_ok', '=', False)]</attribute>
+        <attribute name="readonly">[('editable', '=', False)]</attribute>
         <attribute name="class" add="mt-1 mb-1" remove="mt-2 mb-2" separator=" "/>
       </field>
 
@@ -575,6 +569,8 @@ attributes:
     if true, the field will not appear either in the active measures nor in the selectable
     measures (useful for fields that do not make sense aggregated, such as fields in different
     units, e.g. € and $).
+    If the value is a domain, the domain is evaluated in the context of the current row's
+    record, if ``True`` the corresponding attribute is set on the cell.
 
 .. _reference/views/dashboard:
 
@@ -810,8 +806,9 @@ logic. They are used as elements or sets of elements in form views.
     the title of the tab
   ``accesskey``
     an HTML accesskey_
-  ``attrs``
-    standard dynamic attributes based on record values
+  ``invisible``
+    standard dynamic attributes based on record values. Hide the field
+    if trully or if the domain result is trully
 
   .. note:: Note that ``notebook`` should not be placed within ``group``
 
@@ -917,19 +914,22 @@ system. Available semantic components are:
 
        Use :func:`odoo.api.onchange` on the model
 
-  ``attrs``
-    dynamic meta-parameters based on record values
   ``domain``
     for relational fields only, filters to apply when displaying existing
     records for selection
   ``context``
     for relational fields only, context to pass when fetching possible values
   ``readonly``
-    display the field in both readonly and edit mode, but never make it
-    editable
+    standard dynamic attributes based on record values. If the value is
+    trully or the domain result is trully, display the field in both readonly
+    and edit mode, but never make it editable
   ``required``
-    generates an error and prevents saving the record if the field doesn't
-    have a value
+    standard dynamic attributes based on record values. If the value is
+    trully or the domain result is trully, generates an error and prevents
+    saving the record if the field doesn't have a value
+  ``invisible``
+    standard dynamic attributes based on record values. Hide the field
+    if trully or if the domain result is trully
   ``nolabel``
     don't automatically display the field's label, only makes sense if the
     field is a direct child of a ``group`` element
@@ -973,7 +973,7 @@ system. Available semantic components are:
     definition in the model) by default.
   ``class``
     same as for ``field`` component.
-  ``attrs``
+  ``invisible``
     same as for ``field`` component.
 
 
@@ -1943,26 +1943,9 @@ Possible children elements of the list view are:
         lists the groups which should be able to see the button
     ``args``
         see ``type``
-    ``attrs``
-        dynamic attributes based on record values.
-
-        A mapping of attributes to domains, domains are evaluated in the
-        context of the current row's record, if ``True`` the corresponding
-        attribute is set on the cell.
-
-        Possible attribute is ``invisible`` (hides the button).
-    ``states``
-        shorthand for ``invisible`` ``attrs``: a list of states, comma separated,
-        requires that the model has a ``state`` field and that it is
-        used in the view.
-
-        Makes the button ``invisible`` if the record is *not* in one of the
-        listed states
-
-        .. danger::
-
-            Using ``states`` in combination with ``attrs`` may lead to
-            unexpected results as domains are combined with a logical AND.
+    ``invisible``
+        standard dynamic attributes based on record values. Hide the field
+        if trully or if the domain result is trully
     ``context``
         merged into the view's context when performing the button's Odoo call
 
@@ -1981,9 +1964,20 @@ Possible children elements of the list view are:
         the title of the field's column (by default, uses the ``string`` of
         the model's field)
     ``invisible``
-        fetches and stores the field, but doesn't display the column in the
+        standard dynamic attributes based on record values. Hide the field
+        if trully or if the domain result is trully.
+
+        Fetches and stores the field, but doesn't display the column in the
         table. Necessary for fields which shouldn't be displayed but are
-        used by e.g. ``@colors``
+        used by e.g. ``@colors`` or a domain.
+    ``readonly``
+        standard dynamic attributes based on record values. If the value is
+        trully or the domain result is trully, display the field in both readonly
+        and edit mode, but never make it editable
+    ``required``
+        standard dynamic attributes based on record values. If the value is
+        trully or the domain result is trully, generates an error and prevents
+        saving the record if the field doesn't have a value
     ``groups``
         lists the groups which should be able to see the field
     ``widget``
@@ -2003,10 +1997,6 @@ Possible children elements of the list view are:
         aggregation is only computed on *currently displayed* records. The
         aggregation operation must match the corresponding field's
         ``group_operator``
-    ``attrs``
-        dynamic attributes based on record values. Only effects the current
-        field, so e.g. ``invisible`` will hide the field but leave the same
-        field of other records visible, it will not hide the column itself
     ``width`` (for ``editable``)
         when there is no data in the list, the width of a column can be forced
         by setting this attribute. The value can be an absolute width (e.g.
@@ -2038,7 +2028,7 @@ Possible children elements of the list view are:
 
         .. code-block:: xml
 
-           <field name="product_is_late" attrs="{'column_invisible': [('parent.has_late_products', '=', False)]}"/>
+           <field name="product_is_late" column_invisible="[('parent.has_late_products', '=', False)]"/>
 
     .. note:: When a list view is grouped, numeric fields are aggregated and
               displayed for each group.  Also, if there are too many records in
@@ -2066,7 +2056,7 @@ Possible children elements of the list view are:
       <field name="name"/> <!-- name of partner_id -->
       <button type="edit" name="edit" string="Edit"/>
       <button type="object" name="my_method" string="Button1"
-        attrs="{'invisible': [('name', '=', 'Georges')]}"/>
+        invisible="[('name', '=', 'Georges')]"/>
     </groupby>
 
   A special button (`type="edit"`) can be defined to open the many2one form view.

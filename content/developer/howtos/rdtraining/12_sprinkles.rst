@@ -282,30 +282,30 @@ buttons conditionally.
     Tip: do not hesitate to search for ``states=`` in the Odoo XML files for some examples.
 
 More generally, it is possible to make a field ``invisible``, ``readonly`` or ``required`` based
-on the value of other fields thanks to the ``attrs`` attribute. Note that ``invisible`` can also be applied
-to other elements of the view such as ``button`` or ``group``.
+on the value of other fields. Note that ``invisible`` can also be appliedto other elements of
+the view such as ``button`` or ``group``.
 
-The ``attrs`` is a dictionary with the property as a key and a domain as a value. The domain gives
-the condition in which the property applies. For example:
+``invisible``, ``readonly`` or ``required`` can have ``True``, ``False`` or a domain as value.
+The domain gives the condition in which the property applies. For example:
 
 .. code-block:: xml
 
     <form>
-        <field name="description" attrs="{'invisible': [('is_partner', '=', False)]}"/>
+        <field name="description" invisible="[('is_partner', '=', False)]"/>
         <field name="is_partner" invisible="1"/>
     </form>
 
 This means that the ``description`` field is invisible when ``is_partner`` is ``False``. It is
-important to note that a field used in an ``attrs`` **must** be present in the view. If it
+important to note that a field used in ``invisible`` **must** be present in the view. If it
 should not be displayed to the user, we can use the ``invisible`` attribute to hide it.
 
-.. exercise:: Use ``attrs``.
+.. exercise:: Use ``invisible``.
 
     - Make the garden area and orientation invisible in the ``estate.property`` form view when
       there is no garden.
     - Make the 'Accept' and 'Refuse' buttons invisible once the offer state is set.
     - Do not allow adding an offer when the property state is 'Offer Accepted', 'Sold' or
-      'Canceled'. To do this use the ``readonly`` ``attrs``.
+      'Canceled'. To do this use the ``readonly`` attribute.
 
 .. warning::
 
