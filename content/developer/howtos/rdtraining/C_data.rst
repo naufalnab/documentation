@@ -21,7 +21,7 @@ words, such data is often necessary for the module to work properly. This data w
 installed when installing the module.
 
 We already met technical data previously since we have defined
-:ref:`security rules<howto/rdtraining/N_security>`, :ref:`views<reference/views>` and
+:ref:`security rules<howto/rdtraining/N_security>`, :ref:`views<reference/view_record>` and
 :ref:`actions<reference/actions>`. Those are one kind of master data.
 
 On top of technical data, business data can be defined, e.g. countries, currencies, units of measure,

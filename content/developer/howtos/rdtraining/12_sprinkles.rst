@@ -16,7 +16,7 @@ This chapter covers a very small subset of what can be done in the views. Do not
 read the reference documentation for a more complete overview.
 
 **Reference**: the documentation related to this chapter can be found in
-:ref:`reference/views`.
+:ref:`reference/view_record` and :ref:`user_interface/views`.
 
 Inline Views
 ============
@@ -385,7 +385,7 @@ Search
 ------
 
 **Reference**: the documentation related to this section can be found in
-:ref:`reference/views/search` and :ref:`reference/views/search/defaults`.
+:ref:`reference/user_interface/views/search` and :ref:`reference/user_interface/views/search/defaults`.
 
 .. note::
 

@@ -53,13 +53,13 @@ Business objects
     Declared as Python classes, these resources are automatically persisted
     by Odoo based on their configuration
 
-:ref:`Object views <reference/views>`
+:ref:`Object views <user_interface/views>`
     Definition of business objects UI display
 
 :ref:`Data files <reference/data>`
     XML or CSV files declaring the model metadata :
 
-    * :ref:`views <reference/views>` or :ref:`reports <reference/reports>`,
+    * :ref:`views <user_interface/views>` or :ref:`reports <reference/reports>`,
     * configuration data (modules parametrization, :ref:`security rules <reference/security>`),
     * demonstration data
     * and more
@@ -304,7 +304,7 @@ requests, the view with the correct type and the lowest priority will be
 used (so the lowest-priority view of each type is the default view for that
 type).
 
-:ref:`View inheritance <reference/views/inheritance>` allows altering views
+:ref:`View inheritance <reference/view_record/inheritance>` allows altering views
 declared elsewhere (adding or removing content).
 
 Generic view declaration
@@ -1300,7 +1300,7 @@ A report is a combination two elements:
       the *report* contextual menu rather than the *action* one. There is no
       technical difference but putting elements in the right place helps users.
 
-* A standard :ref:`QWeb view <reference/views/qweb>` for the actual report:
+* A standard :ref:`QWeb view <reference/user_interface/views/qweb>` for the actual report:
 
   .. code-block:: xml
 
