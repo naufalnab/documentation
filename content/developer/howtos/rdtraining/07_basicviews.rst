@@ -107,7 +107,7 @@ elements (groups and notebooks) and interactive elements (buttons and fields):
         </sheet>
     </form>
 
-It is possible to use regular HTML tags such as ``div`` and ``h1`` as well as the the ``class`` attribute
+It is possible to use regular HTML tags such as ``div`` and ``h1`` as well as the ``class`` attribute
 (Odoo provides some built-in classes) to fine-tune the look.
 
 A simple example can be found
